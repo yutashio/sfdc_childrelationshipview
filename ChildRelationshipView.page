@@ -1,0 +1,53 @@
+<apex:page controller="ChildRelationshipViewController" action="{!init}" showHeader="true" sidebar="true">
+
+	<apex:form>
+		<apex:pageBlock title="子リレーション一覧">
+			<apex:pageMessages showDetail="false"/>
+			<apex:pageblockSection title="検索" columns="2">
+				<apex:inputText label="親オブジェクト名" value="{!parentObjLabel}" />
+				<apex:inputText label="親オブジェクトAPI参照名" value="{!parentObjApi}" />
+			</apex:pageblockSection>
+			<apex:pageBlockButtons location="bottom" >
+				<apex:commandButton value="検索" action="{!search}" style="font-size:12pt;width:100px;height:30px;"/>
+				<apex:commandButton value="クリア" action="{!clear}" style="font-size:12pt;width:100px;height:30px;"/>
+			</apex:pageBlockButtons>
+		</apex:pageBlock>
+	</apex:form>
+
+	<apex:pageBlock title="子リレーション一覧">
+		<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfos.size}件"/>
+		<table>
+			<tr>
+				<td>
+					<apex:pageBlockTable value="{! childObjInfos}" var="childObjInfo">
+						<apex:column>
+							<apex:facet name="header">オブジェクト名</apex:facet>
+							<apex:outputText value="{! childObjInfo[0]}"/>
+						</apex:column>
+						<apex:column>
+							<apex:facet name="header">オブジェクトAPI参照名</apex:facet>
+							<apex:outputText value="{! childObjInfo[1]}"/>
+						</apex:column>
+						<apex:column>
+							<apex:facet name="header">参照項目名</apex:facet>
+							<apex:outputText value="{! childObjInfo[2]}"/>
+						</apex:column>
+						<apex:column>
+							<apex:facet name="header">参照項目API参照名</apex:facet>
+							<apex:outputText value="{! childObjInfo[3]}"/>
+						</apex:column>
+						<apex:column>
+							<apex:facet name="header">子リレーション名</apex:facet>
+							<apex:outputText value="{! childObjInfo[4]}"/>
+						</apex:column>
+						<apex:column>
+							<apex:facet name="header">カスケード削除</apex:facet>
+							<apex:outputText value="{! childObjInfo[5]}" style="{!if(childObjInfo[5]='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
+						</apex:column>
+					</apex:pageBlockTable> 
+				</td>
+			</tr>
+		</table>
+	</apex:pageBlock>
+
+</apex:page>
