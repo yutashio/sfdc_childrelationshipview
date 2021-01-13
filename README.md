@@ -14,7 +14,7 @@ You can change it to English by clicking the link
 ![検索結果](/images/image02.png)
 - オブジェクト名
 - オブジェクトAPI参照名
-- 参照項目名
-- 参照項目API参照名
+- 項目名
+- 項目API参照名
 - 子リレーション名
 - カスケード削除

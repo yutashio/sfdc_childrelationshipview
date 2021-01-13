@@ -29,11 +29,11 @@
 							<apex:outputText value="{! childObjInfo[1]}"/>
 						</apex:column>
 						<apex:column>
-							<apex:facet name="header">参照項目名</apex:facet>
+							<apex:facet name="header">項目名</apex:facet>
 							<apex:outputText value="{! childObjInfo[2]}"/>
 						</apex:column>
 						<apex:column>
-							<apex:facet name="header">参照項目API参照名</apex:facet>
+							<apex:facet name="header">項目API参照名</apex:facet>
 							<apex:outputText value="{! childObjInfo[3]}"/>
 						</apex:column>
 						<apex:column>
