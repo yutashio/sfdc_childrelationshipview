@@ -4,8 +4,6 @@ public with sharing class ChildRelationshipViewController {
 	public String parentObjApi { get; set; }
 	public Boolean omitCreateAndLastModifiedById { get; set; }
 	public List<List<String>> childObjInfos { get; set; }
-	public List<List<String>> childObjInfosOverThousand { get; set; }
-	public List<List<String>> childObjInfosOverTwoThousand { get; set; }
 
 
 	public void init(){
@@ -17,8 +15,6 @@ public with sharing class ChildRelationshipViewController {
 	public void execute() {
 
 		this.childObjInfos = new List<List<String>>();
-		this.childObjInfosOverThousand = new List<List<String>>();
-		this.childObjInfosOverTwoThousand = new List<List<String>>();
 
 		Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
 		for (String key : gd.keySet()) {
@@ -61,13 +57,7 @@ public with sharing class ChildRelationshipViewController {
 			if (omitCreateAndLastModifiedById && (childObjList.get(3) == 'CreatedById' || childObjList.get(3) == 'LastModifiedById')) {
 
 			}else {
-				if(childObjInfos.size()<1000){
-					childObjInfos.add(childObjList);
-				}else if(childObjInfos.size()<2000) {
-					childObjInfosOverThousand.add(childObjList);
-				}else {
-					childObjInfosOverTwoThousand.add(childObjList);
-				}
+				childObjInfos.add(childObjList);
 			}
 		}
 	}

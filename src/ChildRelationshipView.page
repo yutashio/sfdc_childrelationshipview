@@ -1,4 +1,4 @@
-<apex:page controller="ChildRelationshipViewController" action="{!init}" showHeader="true" sidebar="true">
+<apex:page controller="ChildRelationshipViewController" action="{!init}" showHeader="true" sidebar="true" readOnly="true">
 
 	<apex:form>
 		<apex:pageBlock title="子リレーション一覧">
@@ -20,7 +20,7 @@
 	</apex:form>
 
 	<apex:pageBlock title="子リレーション一覧">
-		<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfos.size + childObjInfosOverThousand.size + childObjInfosOverTwoThousand.size}件"/>
+		<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfos.size }件"/>
 		<table>
 			<tr>
 				<td>
@@ -48,48 +48,6 @@
 						<apex:column>
 							<apex:facet name="header">カスケード削除</apex:facet>
 							<apex:outputText value="{! childObjInfo[5]}" style="{!if(childObjInfo[5]='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
-						</apex:column>
-					</apex:pageBlockTable> 
-
-					<apex:pageBlockTable rendered="{! if(childObjInfosOverThousand != null, true, false) }" value="{! childObjInfosOverThousand}" var="childObjInfoOverThou">
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverThou[0]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverThou[1]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverThou[2]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverThou[3]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverThou[4]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverThou[5]}" style="{!if(childObjInfoOverThou[5]='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
-						</apex:column>
-					</apex:pageBlockTable> 
-
-					<apex:pageBlockTable rendered="{! if(childObjInfosOverTwoThousand != null, true, false) }" value="{! childObjInfosOverTwoThousand}" var="childObjInfoOverTwoThou">
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverTwoThou[0]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverTwoThou[1]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverTwoThou[2]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverTwoThou[3]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverTwoThou[4]}"/>
-						</apex:column>
-						<apex:column>
-							<apex:outputText value="{! childObjInfoOverTwoThou[5]}" style="{!if(childObjInfoOverTwoThou[5]='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
 						</apex:column>
 					</apex:pageBlockTable> 
 				</td>
