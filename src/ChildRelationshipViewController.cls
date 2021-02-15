@@ -3,7 +3,7 @@ public with sharing class ChildRelationshipViewController {
 	public String parentObjLabel { get; set; }
 	public String parentObjApi { get; set; }
 	public Boolean omitCreateAndLastModifiedById { get; set; }
-	public List<List<String>> childObjInfos { get; set; }
+	public List<Map<String,String>> childObjInfosMapList { get; set; }
 
 
 	public void init(){
@@ -14,7 +14,7 @@ public with sharing class ChildRelationshipViewController {
 
 	public void execute() {
 
-		this.childObjInfos = new List<List<String>>();
+		this.childObjInfosMapList = new List<Map<String,String>>();
 
 		Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
 		for (String key : gd.keySet()) {
@@ -28,36 +28,48 @@ public with sharing class ChildRelationshipViewController {
 		List<Schema.ChildRelationship> crList = dsr.getChildRelationships();
 
 		for(Schema.ChildRelationship cr : crList){
-			List<String> childObjList = new List<String>();
+			Map<String,String> childObjMap = new Map<String,String>();
 
-			childObjList.add(cr.getChildSObject().getDescribe().getLabel());
+			childObjMap.put('objectLabel', cr.getChildSObject().getDescribe().getLabel());
 
 			if (String.isBlank(String.valueOf(cr.getChildSObject()))) {
-				childObjList.add('-');
+				childObjMap.put('objectAPI', '-');
 			}else {
-				childObjList.add(String.valueOf(cr.getChildSObject()));
+				childObjMap.put('objectAPI', String.valueOf(cr.getChildSObject()));
 			}
 
-			childObjList.add(cr.getField().getDescribe().getLabel());
+			if(cr.getChildSObject().getDescribe().isCustom()){
+				childObjMap.put('objectSetting', 'Custom');
+			}else {
+				childObjMap.put('objectSetting', 'Standard');
+			}
+
+			childObjMap.put('fieldLabel', cr.getField().getDescribe().getLabel());
 
 			if (String.isBlank(String.valueOf(cr.getField()))) {
-				childObjList.add('-');
+				childObjMap.put('fieldAPI', '-');
 			}else {
-				childObjList.add(String.valueOf(cr.getField()));
+				childObjMap.put('fieldAPI', String.valueOf(cr.getField()));
+			}
+
+			if(cr.getField().getDescribe().isCustom()){
+				childObjMap.put('fieldSetting', 'Custom');
+			}else {
+				childObjMap.put('fieldSetting', 'Standard');
 			}
 
 			if (String.isBlank(cr.getRelationshipName())) {
-				childObjList.add('-');
+				childObjMap.put('childRelationLabel', '-');
 			}else {
-				childObjList.add(cr.getRelationshipName());
+				childObjMap.put('childRelationLabel', cr.getRelationshipName());
 			}
 
-			childObjList.add(String.valueOf(cr.isCascadeDelete()));
+			childObjMap.put('cascadeDelete', String.valueOf(cr.isCascadeDelete()));
 
-			if (omitCreateAndLastModifiedById && (childObjList.get(3) == 'CreatedById' || childObjList.get(3) == 'LastModifiedById')) {
+			if (omitCreateAndLastModifiedById && (childObjMap.get('fieldAPI') == 'CreatedById' || childObjMap.get('fieldAPI') == 'LastModifiedById')) {
 
 			}else {
-				childObjInfos.add(childObjList);
+				childObjInfosMapList.add(childObjMap);
 			}
 		}
 	}

@@ -20,34 +20,42 @@
 	</apex:form>
 
 	<apex:pageBlock title="子リレーション一覧">
-		<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfos.size }件"/>
+		<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfosMapList.size }件"/>
 		<table>
 			<tr>
 				<td>
-					<apex:pageBlockTable value="{! childObjInfos}" var="childObjInfo">
+					<apex:pageBlockTable value="{! childObjInfosMapList}" var="childObjInfoMapList">
 						<apex:column>
 							<apex:facet name="header">オブジェクト名</apex:facet>
-							<apex:outputText value="{! childObjInfo[0]}"/>
+							<apex:outputText value="{! childObjInfoMapList['objectLabel']}"/>
 						</apex:column>
 						<apex:column>
 							<apex:facet name="header">オブジェクトAPI参照名</apex:facet>
-							<apex:outputText value="{! childObjInfo[1]}"/>
+							<apex:outputText value="{! childObjInfoMapList['objectAPI']}"/>
+						</apex:column>
+						<apex:column>
+							<apex:facet name="header">Standard/Custom</apex:facet>
+							<apex:outputText value="{! childObjInfoMapList['objectSetting']}" style="{!if(childObjInfoMapList['objectSetting']='Custom','color:orange;font-weight: bold','color:purple;font-weight: bold')}"/>
 						</apex:column>
 						<apex:column>
 							<apex:facet name="header">項目名</apex:facet>
-							<apex:outputText value="{! childObjInfo[2]}"/>
+							<apex:outputText value="{! childObjInfoMapList['fieldLabel']}"/>
 						</apex:column>
 						<apex:column>
 							<apex:facet name="header">項目API参照名</apex:facet>
-							<apex:outputText value="{! childObjInfo[3]}"/>
+							<apex:outputText value="{! childObjInfoMapList['fieldAPI']}"/>
+						</apex:column>
+						<apex:column>
+							<apex:facet name="header">Standard/Custom</apex:facet>
+							<apex:outputText value="{! childObjInfoMapList['fieldSetting']}" style="{!if(childObjInfoMapList['fieldSetting']='Custom','color:orange;font-weight: bold','color:purple;font-weight: bold')}"/>
 						</apex:column>
 						<apex:column>
 							<apex:facet name="header">子リレーション名</apex:facet>
-							<apex:outputText value="{! childObjInfo[4]}"/>
+							<apex:outputText value="{! childObjInfoMapList['childRelationLabel']}"/>
 						</apex:column>
 						<apex:column>
 							<apex:facet name="header">カスケード削除</apex:facet>
-							<apex:outputText value="{! childObjInfo[5]}" style="{!if(childObjInfo[5]='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
+							<apex:outputText value="{! childObjInfoMapList['cascadeDelete']}" style="{!if(childObjInfoMapList['cascadeDelete']='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
 						</apex:column>
 					</apex:pageBlockTable> 
 				</td>
