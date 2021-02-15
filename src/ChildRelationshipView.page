@@ -20,6 +20,15 @@
 	</apex:form>
 
 	<apex:pageBlock title="子リレーション一覧">
+		<div style="padding: 1px;width: 140px;margin: 0 0 0 auto;border: 2px solid;">
+			<strong>Legend:</strong>
+			<ul>
+				<li><div style="color:green;">true</div></li>
+				<li><div style="color:red;">false</div></li>
+				<li><div style="color:orange;">Custom</div></li>
+				<li><div style="color:purple;">Standard</div></li>
+			</ul>
+		</div>
 		<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfosMapList.size }件"/>
 		<table>
 			<tr>
