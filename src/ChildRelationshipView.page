@@ -21,7 +21,7 @@
 
 	<apex:pageBlock title="子リレーション一覧">
 		<div style="padding: 1px;width: 140px;margin: 0 0 0 auto;border: 2px solid;">
-			<strong>Legend:</strong>
+			<strong>種別:</strong>
 			<ul>
 				<li><div style="color:green;">true</div></li>
 				<li><div style="color:red;">false</div></li>
@@ -29,47 +29,48 @@
 				<li><div style="color:purple;">Standard</div></li>
 			</ul>
 		</div>
-		<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfosMapList.size }件"/>
-		<table>
-			<tr>
-				<td>
-					<apex:pageBlockTable value="{! childObjInfosMapList}" var="childObjInfoMapList">
-						<apex:column>
-							<apex:facet name="header">オブジェクト名</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['objectLabel']}"/>
-						</apex:column>
-						<apex:column>
-							<apex:facet name="header">オブジェクトAPI参照名</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['objectAPI']}"/>
-						</apex:column>
-						<apex:column>
-							<apex:facet name="header">Standard/Custom</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['objectSetting']}" style="{!if(childObjInfoMapList['objectSetting']='Custom','color:orange;font-weight: bold','color:purple;font-weight: bold')}"/>
-						</apex:column>
-						<apex:column>
-							<apex:facet name="header">項目名</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['fieldLabel']}"/>
-						</apex:column>
-						<apex:column>
-							<apex:facet name="header">項目API参照名</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['fieldAPI']}"/>
-						</apex:column>
-						<apex:column>
-							<apex:facet name="header">Standard/Custom</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['fieldSetting']}" style="{!if(childObjInfoMapList['fieldSetting']='Custom','color:orange;font-weight: bold','color:purple;font-weight: bold')}"/>
-						</apex:column>
-						<apex:column>
-							<apex:facet name="header">子リレーション名</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['childRelationLabel']}"/>
-						</apex:column>
-						<apex:column>
-							<apex:facet name="header">カスケード削除</apex:facet>
-							<apex:outputText value="{! childObjInfoMapList['cascadeDelete']}" style="{!if(childObjInfoMapList['cascadeDelete']='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
-						</apex:column>
-					</apex:pageBlockTable> 
-				</td>
-			</tr>
-		</table>
+		<apex:outputPanel rendered="{!IF(childObjInfosMapList.size != null, true, false)}">
+			<apex:outputtext style="width:110px" value="検索結果 : {!childObjInfosMapList.size }件"/>
+			<table>
+				<tr>
+					<td>
+						<apex:pageBlockTable value="{! childObjInfosMapList}" var="childObjInfoMapList">
+							<apex:column>
+								<apex:facet name="header">オブジェクト名</apex:facet>
+								<apex:outputLink value="/apex/RedirectObjManager?objectLabel={! childObjInfoMapList['objectAPI']}" target="_blank">{! childObjInfoMapList['objectLabel']}</apex:outputLink>
+							</apex:column>
+							<apex:column>
+								<apex:facet name="header">オブジェクトAPI参照名</apex:facet>
+								<apex:outputText value="{! childObjInfoMapList['objectAPI']}"/>
+							</apex:column>
+							<apex:column>
+								<apex:facet name="header">Standard/Custom</apex:facet>
+								<apex:outputText value="{! childObjInfoMapList['objectSetting']}" style="{!if(childObjInfoMapList['objectSetting']='Custom','color:orange;font-weight: bold','color:purple;font-weight: bold')}"/>
+							</apex:column>
+							<apex:column>
+								<apex:facet name="header">項目名</apex:facet>
+								<apex:outputText value="{! childObjInfoMapList['fieldLabel']}"/>
+							</apex:column>
+							<apex:column>
+								<apex:facet name="header">項目API参照名</apex:facet>
+								<apex:outputText value="{! childObjInfoMapList['fieldAPI']}"/>
+							</apex:column>
+							<apex:column>
+								<apex:facet name="header">Standard/Custom</apex:facet>
+								<apex:outputText value="{! childObjInfoMapList['fieldSetting']}" style="{!if(childObjInfoMapList['fieldSetting']='Custom','color:orange;font-weight: bold','color:purple;font-weight: bold')}"/>
+							</apex:column>
+							<apex:column>
+								<apex:facet name="header">子リレーション名</apex:facet>
+								<apex:outputText value="{! childObjInfoMapList['childRelationLabel']}"/>
+							</apex:column>
+							<apex:column>
+								<apex:facet name="header">カスケード削除</apex:facet>
+								<apex:outputText value="{! childObjInfoMapList['cascadeDelete']}" style="{!if(childObjInfoMapList['cascadeDelete']='true','color:green;font-weight: bold','color:red;font-weight: bold')}"/>
+							</apex:column>
+						</apex:pageBlockTable> 
+					</td>
+				</tr>
+			</table>
+		</apex:outputPanel>
 	</apex:pageBlock>
-
 </apex:page>

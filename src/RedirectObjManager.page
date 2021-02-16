@@ -1,0 +1,2 @@
+<apex:page controller="RedirectObjManagerController" action="{!init}">
+</apex:page>
