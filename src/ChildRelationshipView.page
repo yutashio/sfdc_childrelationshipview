@@ -7,11 +7,17 @@
 				<apex:inputText label="親オブジェクト名" value="{!parentObjLabel}" />
 				<apex:inputText label="親オブジェクトAPI参照名" value="{!parentObjApi}" />
 				<apex:outputText/>
-				<apex:pageBlockSectionItem helpText="JA:ユーザ(User)検索時にお使いください。　EN:use for user search.">
-					<apex:outputText value="作成者ID & 最終更新者IDを省く"/>
+				<apex:pageBlockSectionItem >
+					<apex:outputPanel >
+						<apex:outputLabel value="作成者ID & 最終更新者IDを省く"/>
+						<span class="helpButtonOn" id="hoge-_help" >  
+							<img src="/s.gif" alt="" class="helpOrb"/>
+							<script type="text/javascript">sfdcPage.setHelp('hoge', 'JA:ユーザ(User)検索時にお使いください。　EN:use for user search.');</script>
+						</span>
+					</apex:outputPanel>
 					<apex:inputCheckbox value="{!omitCreateAndLastModifiedById}" label="作成者ID & 最終更新者IDを省く"/>
 				</apex:pageBlockSectionItem>
-            </apex:pageBlockSection>
+			</apex:pageBlockSection>
 			<apex:pageBlockButtons location="bottom" >
 				<apex:commandButton value="検索" action="{!search}" style="font-size:12pt;width:100px;height:30px;"/>
 				<apex:commandButton value="クリア" action="{!clear}" style="font-size:12pt;width:100px;height:30px;"/>
@@ -21,7 +27,7 @@
 
 	<apex:pageBlock title="子リレーション一覧">
 		<div style="padding: 1px;width: 140px;margin: 0 0 0 auto;border: 2px solid;">
-			<strong>種別:</strong>
+			<strong>Type:</strong>
 			<ul>
 				<li><div style="color:green;">true</div></li>
 				<li><div style="color:red;">false</div></li>

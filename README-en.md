@@ -1,4 +1,4 @@
-# **Child Relationship Search Page**
+# **Child Relationship Search Page "Lightning recommended"**
 If you use Workbench, you can check the child relations related to the parent object, but it was a little difficult to use, so I created it.🔨🔧  
 Please use it if you like.💁‍♂️
 
@@ -14,8 +14,10 @@ Please use it if you like.💁‍♂️
 ![Search Result](/READMEimages/image02.png)
 - Object Name
 - Object API Name
+- Standard/Custom (Object)
 - Field name
 - Field API Name
+- Standard/Custom (Field)
 - Child Relation Name
 - Cascade Delete
   
@@ -27,3 +29,11 @@ Since the number of child relations is large for the user object,
 ![checkbox 'false'](/READMEimages/image03.png)
 ### 【Omit Create By ID & Last Modified ID　checkbox "true"】
 ![checkbox 'true'](/READMEimages/image04.png)
+  
+***
+## Page transition to "Object Manager"
+Click to open the corresponding object manager in a new tab.
+### 【Click the link】
+![Click the link](/READMEimages/image05.png)
+### 【Object Manager】
+![Object Manager](/READMEimages/image06.png)
