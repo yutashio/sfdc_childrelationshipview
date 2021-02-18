@@ -1,6 +1,7 @@
-# **子リレーション検索画面 「Lightning推奨」**
+# **子リレーション検索画面**
 Workbenchを使用すれば、親オブジェクトに関連する子リレーションを確認することができますが、少し使いづらい点があったので作成してみました🔨🔧  
 良ければ、お使いください💁‍♂️  
+(Lightning推奨)
   
 👇 You can change it to English by clicking the link.  
 - [English](./README-en.md)
