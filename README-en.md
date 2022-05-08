@@ -1,6 +1,6 @@
 # **Child Relationship Search Page**
-If you use Workbench, you can check the child relations related to the parent object, but it was a little difficult to use, so I created it.🔨🔧  
-Please use it if you like.💁‍♂️  
+If you use Workbench, you can check the child relations related to the parent object, but it was a little difficult to use, so I created it.
+Please use it if you like.💁‍♂️
 "Lightning recommended"
 
 ***
